@@ -1,9 +1,12 @@
 package hexlet.code;
 
+import java.util.Map;
+import hexlet.code.Parsing;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+
 
 @Command(
         name = "gendiff",
@@ -25,6 +28,19 @@ public class App implements Runnable {
     }
     @Override
     public void run() {
-        System.out.println("Hello World!");
+        Map<String, String> mapJson1;
+        try {
+            mapJson1 = Parsing.getData(filePath1);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        Map<String, String> mapJson2;
+        try {
+            mapJson2 = Parsing.getData(filePath2);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(mapJson2.get("verbose"));
     }
 }
