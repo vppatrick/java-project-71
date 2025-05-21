@@ -1,6 +1,8 @@
 package hexlet.code;
 
 import java.util.Map;
+import java.util.concurrent.Callable;
+
 import hexlet.code.Parsing;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -13,7 +15,7 @@ import picocli.CommandLine.Parameters;
         mixinStandardHelpOptions = true,
         description = "Compares two configuration files and shows a difference."
 )
-public class App implements Runnable {
+public class App implements Callable<Integer> {
     @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
     private String format;
 
@@ -27,20 +29,21 @@ public class App implements Runnable {
         new CommandLine(new App()).execute(args);
     }
     @Override
-    public void run() {
-        Map<String, String> mapJson1;
+    public Integer call() {
+        Map<String, String> firstMapOfJson;
         try {
-            mapJson1 = Parsing.getData(filePath1);
+            firstMapOfJson = Parsing.getData(filePath1);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Map<String, String> mapJson2;
+        Map<String, String> secondMapOfJson;
         try {
-            mapJson2 = Parsing.getData(filePath2);
+            secondMapOfJson = Parsing.getData(filePath2);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println(mapJson2.get("verbose"));
+        var result = Differ.generate(firstMapOfJson, secondMapOfJson);
+        System.out.println(result);
+        return 0;
     }
 }
