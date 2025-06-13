@@ -6,7 +6,7 @@ setup:
 clean:
 	./gradlew clean
 
-build:
+build: lint test
 	./gradlew clean build
 
 install:
