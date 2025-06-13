@@ -22,6 +22,6 @@ public class Parsing {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        return objectMapper.readValue(content, new TypeReference<Map<String,String>>(){});
+        return objectMapper.readValue(content, new TypeReference<Map<String, String>>() { });
     }
 }
