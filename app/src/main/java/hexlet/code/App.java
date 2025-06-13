@@ -3,7 +3,6 @@ package hexlet.code;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-import hexlet.code.Parsing;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -44,6 +43,7 @@ public class App implements Callable<Integer> {
         }
         var result = Differ.generate(firstMapOfJson, secondMapOfJson);
         System.out.println(result);
+
         return 0;
     }
 }
