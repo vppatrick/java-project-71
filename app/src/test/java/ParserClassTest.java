@@ -1,13 +1,15 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+import java.nio.file.Paths;
 import hexlet.code.Parser;
 
 public class ParserClassTest {
     @Test
     // Тест парсинга несуществующего файла
     public void testParserNoFile() throws Exception {
-        Exception expected = new Exception("File '/home/vitaliy/java-project-71/"
-                + "app/src/test/resources/nofile.json' does not exist");
+        var path = Paths.get("src", "test", "resources", "nofile.json")
+                .toAbsolutePath().normalize().toString();
+        Exception expected = new Exception("File '" + path + "' does not exist");
         try {
             var result = Parser.getData("src/test/resources/nofile.json");
         } catch (Exception actual) {
