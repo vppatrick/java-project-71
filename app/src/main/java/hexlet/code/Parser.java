@@ -30,10 +30,12 @@ public class Parser {
         ObjectMapper mapper = null;
         if (fileExtension.equals("json")) {
             mapper = new ObjectMapper();
+            return mapper.readValue(content, new TypeReference<Map<String, String>>() { });
         } else if (fileExtension.equals("yml")) {
             mapper = new YAMLMapper();
+            return mapper.readValue(content, new TypeReference<Map<String, String>>() { });
         }
 
-        return mapper.readValue(content, new TypeReference<Map<String, String>>() { });
+        return Map.of();
     }
 }
