@@ -29,19 +29,19 @@ public class App implements Callable<Integer> {
     }
     @Override
     public Integer call() {
-        Map<String, String> firstMapOfJson;
+        Map<String, String> firstMapOfData;
         try {
-            firstMapOfJson = Parsing.getData(filePath1);
+            firstMapOfData = Parser.getData(filePath1);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Map<String, String> secondMapOfJson;
+        Map<String, String> secondMapOfData;
         try {
-            secondMapOfJson = Parsing.getData(filePath2);
+            secondMapOfData = Parser.getData(filePath2);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        var result = Differ.generate(firstMapOfJson, secondMapOfJson);
+        var result = Differ.generate(firstMapOfData, secondMapOfData);
         System.out.println(result);
 
         return 0;
