@@ -104,4 +104,14 @@ public class DifferClassTest {
         var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "plain"));
         assertEquals(expected, actual);
     }
+
+    @Test
+    // Сравнение двух json файлов с вложенными структурами в формате json
+    public void testDiffYamlNestedJson() throws Exception {
+        var firstYaml = Parser.getData("src/test/resources/file5.yml");
+        var secondYaml = Parser.getData("src/test/resources/file6.yml");
+        var expected = normalizeLineEndings(readFixture("result6"));
+        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "json"));
+        assertEquals(expected, actual);
+    }
 }
