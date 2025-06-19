@@ -31,7 +31,7 @@ public class DifferClassTest {
         var firstJson = Parser.getData("src/test/resources/file1.json");
         var secondJson = Parser.getData("src/test/resources/file2.json");
         var expected = normalizeLineEndings(readFixture("result1"));
-        var actual = normalizeLineEndings(Differ.generate(firstJson, secondJson));
+        var actual = normalizeLineEndings(Differ.generate(firstJson, secondJson, "stylish"));
         assertEquals(expected, actual);
     }
 
@@ -41,7 +41,7 @@ public class DifferClassTest {
         var firstJson = Parser.getData("src/test/resources/file1.json");
         var secondJson = Parser.getData("src/test/resources/file3.json");
         var expected = normalizeLineEndings(readFixture("result2"));
-        var actual = normalizeLineEndings(Differ.generate(firstJson, secondJson));
+        var actual = normalizeLineEndings(Differ.generate(firstJson, secondJson, "stylish"));
         assertEquals(expected, actual);
     }
 
@@ -51,7 +51,7 @@ public class DifferClassTest {
         var firstJson = Parser.getData("src/test/resources/file1.json");
         var secondJson = Parser.getData("src/test/resources/file4.json");
         var expected = normalizeLineEndings(readFixture("result3"));
-        var actual = normalizeLineEndings(Differ.generate(firstJson, secondJson));
+        var actual = normalizeLineEndings(Differ.generate(firstJson, secondJson, "stylish"));
         assertEquals(expected, actual);
     }
 
@@ -61,7 +61,7 @@ public class DifferClassTest {
         var firstYaml = Parser.getData("src/test/resources/file1.yml");
         var secondYaml = Parser.getData("src/test/resources/file2.yml");
         var expected = normalizeLineEndings(readFixture("result1"));
-        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml));
+        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "stylish"));
         assertEquals(expected, actual);
     }
 
@@ -71,7 +71,7 @@ public class DifferClassTest {
         var firstYaml = Parser.getData("src/test/resources/file1.yml");
         var secondYaml = Parser.getData("src/test/resources/file3.yml");
         var expected = normalizeLineEndings(readFixture("result2"));
-        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml));
+        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "stylish"));
         assertEquals(expected, actual);
     }
 
@@ -81,7 +81,17 @@ public class DifferClassTest {
         var firstYaml = Parser.getData("src/test/resources/file1.yml");
         var secondYaml = Parser.getData("src/test/resources/file4.yml");
         var expected = normalizeLineEndings(readFixture("result3"));
-        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml));
+        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "stylish"));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    // Сравнение двух yaml файлов с вложенными структурами
+    public void testDiffYamlNested() throws Exception {
+        var firstYaml = Parser.getData("src/test/resources/file5.yml");
+        var secondYaml = Parser.getData("src/test/resources/file6.yml");
+        var expected = normalizeLineEndings(readFixture("result4"));
+        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "stylish"));
         assertEquals(expected, actual);
     }
 }
