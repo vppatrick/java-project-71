@@ -15,7 +15,8 @@ import picocli.CommandLine.Parameters;
         description = "Compares two configuration files and shows a difference."
 )
 public class App implements Callable<Integer> {
-    @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
+            description = "output format [default: stylish]")
     private String format;
 
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
@@ -29,19 +30,19 @@ public class App implements Callable<Integer> {
     }
     @Override
     public Integer call() {
-        Map<String, String> firstMapOfData;
+        Map<String, Object> firstMapOfData;
         try {
             firstMapOfData = Parser.getData(filePath1);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Map<String, String> secondMapOfData;
+        Map<String, Object> secondMapOfData;
         try {
             secondMapOfData = Parser.getData(filePath2);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        var result = Differ.generate(firstMapOfData, secondMapOfData);
+        var result = Differ.generate(firstMapOfData, secondMapOfData, format);
         System.out.println(result);
 
         return 0;
