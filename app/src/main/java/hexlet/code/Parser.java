@@ -14,7 +14,7 @@ public class Parser {
         var dotIndex = fileName.lastIndexOf('.');
         return dotIndex >= 0 ? fileName.substring(dotIndex + 1) : "";
     }
-    public static Map<String, String> getData(String filePath) throws Exception {
+    public static Map<String, Object> getData(String filePath) throws Exception {
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
 
         // Проверяем существование файла
@@ -30,10 +30,10 @@ public class Parser {
         ObjectMapper mapper = null;
         if (fileExtension.equals("json")) {
             mapper = new ObjectMapper();
-            return mapper.readValue(content, new TypeReference<Map<String, String>>() { });
+            return mapper.readValue(content, new TypeReference<Map<String, Object>>() { });
         } else if (fileExtension.equals("yml")) {
             mapper = new YAMLMapper();
-            return mapper.readValue(content, new TypeReference<Map<String, String>>() { });
+            return mapper.readValue(content, new TypeReference<Map<String, Object>>() { });
         }
 
         return Map.of();
