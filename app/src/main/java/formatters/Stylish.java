@@ -1,11 +1,10 @@
 package formatters;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.StringJoiner;
 
 public class Stylish {
-    public static String getFormat(LinkedHashMap<String, HashMap<String, Object>> data) {
+    public static String getFormat(LinkedHashMap<String, LinkedHashMap<String, Object>> data) {
         StringJoiner result = new StringJoiner("\n");
         result.add("{");
         for (var key : data.keySet()) {
