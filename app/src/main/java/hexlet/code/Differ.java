@@ -17,33 +17,33 @@ public class Differ {
         List<String> sortedSetOfKeys = new ArrayList<>(setOfKeys);
         Collections.sort(sortedSetOfKeys);
 
-        LinkedHashMap<String, HashMap<String, String>> result = new LinkedHashMap<>();
+        LinkedHashMap<String, HashMap<String, Object>> result = new LinkedHashMap<>();
         for (var key : sortedSetOfKeys) {
-            var result1 = String.valueOf(firstMapOfData.getOrDefault(key, "absent"));
-            var result2 = String.valueOf(secondMapOfData.getOrDefault(key, "absent"));
-            if (result1.equals("absent")) { // added
-                result.put(key, new HashMap<String, String>() {{
+            var result1 = firstMapOfData.getOrDefault(key, "absent");
+            var result2 = secondMapOfData.getOrDefault(key, "absent");
+            if (String.valueOf(result1).equals("absent")) { // added
+                result.put(key, new HashMap<String, Object>() {{
                         put("state", "added");
                         put("value", result2);
                     }});
-            } else if (result2.equals("absent")) { // removed
-                result.put(key, new HashMap<String, String>() {{
+            } else if (String.valueOf(result2).equals("absent")) { // removed
+                result.put(key, new HashMap<String, Object>() {{
                         put("state", "removed");
                         put("value", result1);
                     }});
-            } else if (result1.equals(result2)) { // no change
-                result.put(key, new HashMap<String, String>() {{
+            } else if (String.valueOf(result1).equals(String.valueOf(result2))) { // no change
+                result.put(key, new HashMap<String, Object>() {{
                         put("state", "noChange");
                         put("value", result1);
                     }});
             } else { // updated
-                result.put(key, new HashMap<String, String>() {{
+                result.put(key, new HashMap<String, Object>() {{
                         put("state", "updated");
                         put("oldValue", result1);
                         put("newValue", result2);
                     }});
             }
         }
-        return Formater.getData(result, format);
+        return Formatter.getData(result, format);
     }
 }
