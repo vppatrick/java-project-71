@@ -86,12 +86,22 @@ public class DifferClassTest {
     }
 
     @Test
-    // Сравнение двух yaml файлов с вложенными структурами
-    public void testDiffYamlNested() throws Exception {
+    // Сравнение двух yaml файлов с вложенными структурами в формате stylish
+    public void testDiffYamlNestedStylish() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file5.yml");
         var secondYaml = Parser.getData("src/test/resources/file6.yml");
         var expected = normalizeLineEndings(readFixture("result4"));
         var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "stylish"));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    // Сравнение двух yaml файлов с вложенными структурами в формате plain
+    public void testDiffYamlNestedPlain() throws Exception {
+        var firstYaml = Parser.getData("src/test/resources/file5.yml");
+        var secondYaml = Parser.getData("src/test/resources/file6.yml");
+        var expected = normalizeLineEndings(readFixture("result5"));
+        var actual = normalizeLineEndings(Differ.generate(firstYaml, secondYaml, "plain"));
         assertEquals(expected, actual);
     }
 }
