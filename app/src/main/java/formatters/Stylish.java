@@ -13,8 +13,9 @@ public final class Stylish {
     public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
         StringJoiner result = new StringJoiner("\n");
         result.add("{");
-        for (var key : data.keySet()) {
-            var value = data.get(key);
+        for (var entry : data.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
             if (value.get(STATE).equals("added")) {
                 result.add("  + " + key + ": " + value.get(VALUE));
             } else if (value.get(STATE).equals("removed")) {

@@ -12,8 +12,9 @@ public final class Plain {
     }
     public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
         StringJoiner result = new StringJoiner("\n");
-        for (var key : data.keySet()) {
-            var value = data.get(key);
+        for (var entry : data.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
             if (value.get(STATE).equals("added")) {
                 result.add(PROPERTY + key + "' was added with value: "
                         + castingToType(value.get("value")));

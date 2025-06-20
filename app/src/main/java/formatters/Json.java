@@ -16,8 +16,9 @@ public final class Json {
     public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
         ObjectMapper objectMapper = new ObjectMapper();
         StringJoiner result = new StringJoiner(",");
-        for (var key : data.keySet()) {
-            var value = data.get(key);
+        for (var entry : data.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
             if (!value.get("state").equals("noChange")) {
                 try {
                     result.add("\"" + key + "\": " + objectMapper.writeValueAsString(value));
