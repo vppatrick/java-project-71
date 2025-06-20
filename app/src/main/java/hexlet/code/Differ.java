@@ -11,6 +11,9 @@ public class Differ {
     private static final String ABSENT = "absent";
     private static final String STATE = "state";
     private static final String VALUE = "value";
+    public static String generate(String filePath1, String filePath2) {
+        return Differ.generate(filePath1, filePath2, "stylish");
+    }
     public static String generate(String filePath1, String filePath2, String format) {
         Map<String, Object> firstMapOfData;
         try {
