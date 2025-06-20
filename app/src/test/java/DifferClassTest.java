@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import hexlet.code.Differ;
 import hexlet.code.Parser;
 
-public class DifferClassTest {
+class DifferClassTest {
 
     private static Path getFixturePath(String fileName) {
         return Paths.get("src", "test", "resources", fileName)
@@ -18,7 +18,7 @@ public class DifferClassTest {
         return Files.readString(path).trim();
     }
 
-    public static String normalizeLineEndings(String input) {
+    static String normalizeLineEndings(String input) {
         if (input == null || input.isEmpty()) {
             return input;
         }
@@ -27,7 +27,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух стандартных json файлов
-    public void testDiffJsonNormal() throws Exception {
+    void testDiffJsonNormal() throws Exception {
         var firstJson = Parser.getData("src/test/resources/file1.json");
         var secondJson = Parser.getData("src/test/resources/file2.json");
         var expected = normalizeLineEndings(readFixture("result1"));
@@ -37,7 +37,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух json файлов с одинаковыми ключами и разными значениями
-    public void testDiffJsonValues() throws Exception {
+    void testDiffJsonValues() throws Exception {
         var firstJson = Parser.getData("src/test/resources/file1.json");
         var secondJson = Parser.getData("src/test/resources/file3.json");
         var expected = normalizeLineEndings(readFixture("result2"));
@@ -47,7 +47,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение json файла с пустым файлом
-    public void testDiffJsonEmpty() throws Exception {
+    void testDiffJsonEmpty() throws Exception {
         var firstJson = Parser.getData("src/test/resources/file1.json");
         var secondJson = Parser.getData("src/test/resources/file4.json");
         var expected = normalizeLineEndings(readFixture("result3"));
@@ -57,7 +57,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух стандартных yaml файлов
-    public void testDiffYamlNormal() throws Exception {
+    void testDiffYamlNormal() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file1.yml");
         var secondYaml = Parser.getData("src/test/resources/file2.yml");
         var expected = normalizeLineEndings(readFixture("result1"));
@@ -67,7 +67,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух yaml файлов с одинаковыми ключами и разными значениями
-    public void testDiffYamlValues() throws Exception {
+    void testDiffYamlValues() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file1.yml");
         var secondYaml = Parser.getData("src/test/resources/file3.yml");
         var expected = normalizeLineEndings(readFixture("result2"));
@@ -77,7 +77,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение yaml файла с пустым файлом
-    public void testDiffYamlEmpty() throws Exception {
+    void testDiffYamlEmpty() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file1.yml");
         var secondYaml = Parser.getData("src/test/resources/file4.yml");
         var expected = normalizeLineEndings(readFixture("result3"));
@@ -87,7 +87,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух yaml файлов с вложенными структурами в формате stylish
-    public void testDiffYamlNestedStylish() throws Exception {
+    void testDiffYamlNestedStylish() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file5.yml");
         var secondYaml = Parser.getData("src/test/resources/file6.yml");
         var expected = normalizeLineEndings(readFixture("result4"));
@@ -97,7 +97,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух yaml файлов с вложенными структурами в формате plain
-    public void testDiffYamlNestedPlain() throws Exception {
+    void testDiffYamlNestedPlain() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file5.yml");
         var secondYaml = Parser.getData("src/test/resources/file6.yml");
         var expected = normalizeLineEndings(readFixture("result5"));
@@ -107,7 +107,7 @@ public class DifferClassTest {
 
     @Test
     // Сравнение двух json файлов с вложенными структурами в формате json
-    public void testDiffYamlNestedJson() throws Exception {
+    void testDiffYamlNestedJson() throws Exception {
         var firstYaml = Parser.getData("src/test/resources/file5.yml");
         var secondYaml = Parser.getData("src/test/resources/file6.yml");
         var expected = normalizeLineEndings(readFixture("result6"));
