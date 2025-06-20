@@ -27,7 +27,7 @@ public final class Json {
                 }
             }
         }
-        return getPrintFormatJson("{" + result.toString() + "}");
+        return getPrintFormatJson("{" + result + "}");
     }
     public static String getPrintFormatJson(String data) {
         ObjectMapper objectMapper = new ObjectMapper();
