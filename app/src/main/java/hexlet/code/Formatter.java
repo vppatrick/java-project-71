@@ -5,7 +5,10 @@ import formatters.Plain;
 import formatters.Stylish;
 import java.util.LinkedHashMap;
 
-public class Formatter {
+public final class Formatter {
+    private Formatter() {
+        throw new IllegalStateException("Utility class");
+    }
     public static String getData(LinkedHashMap<String, LinkedHashMap<String, Object>> data, String format) {
         if (format.equals("stylish")) {
             return Stylish.getFormat(data);
