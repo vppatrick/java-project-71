@@ -28,7 +28,7 @@ public class App implements Callable<Integer> {
         new CommandLine(new App()).execute(args);
     }
     @Override
-    public Integer call() {
+    public final Integer call() {
         var result = Differ.generate(filePath1, filePath2, format);
         System.out.println(result);
         return 0;
