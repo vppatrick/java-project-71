@@ -11,8 +11,19 @@ public class Differ {
     private static final String ABSENT = "absent";
     private static final String STATE = "state";
     private static final String VALUE = "value";
-    public static String generate(Map<String, Object> firstMapOfData,
-                                  Map<String, Object> secondMapOfData, String format) {
+    public static String generate(String filePath1, String filePath2, String format) {
+        Map<String, Object> firstMapOfData;
+        try {
+            firstMapOfData = Parser.getData(filePath1);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        Map<String, Object> secondMapOfData;
+        try {
+            secondMapOfData = Parser.getData(filePath2);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         var setOfKeys = new HashSet<String>();
         setOfKeys.addAll(firstMapOfData.keySet());
         setOfKeys.addAll(secondMapOfData.keySet());
