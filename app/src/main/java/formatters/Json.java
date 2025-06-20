@@ -8,10 +8,12 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.util.LinkedHashMap;
 import java.util.StringJoiner;
 
-public class Json {
+public final class Json {
+    private Json() {
+        throw new IllegalStateException("Utility class");
+    }
     public static String getFormat(LinkedHashMap<String, LinkedHashMap<String, Object>> data) {
         ObjectMapper objectMapper = new ObjectMapper();
-        //objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         StringJoiner result = new StringJoiner(",");
         for (var key : data.keySet()) {
             var value = data.get(key);
