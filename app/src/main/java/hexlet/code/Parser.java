@@ -10,6 +10,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 public class Parser {
+    private Parser() {
+        throw new IllegalStateException("Utility class");
+    }
     public static String getFileExtension(String fileName) {
         var dotIndex = fileName.lastIndexOf('.');
         return dotIndex >= 0 ? fileName.substring(dotIndex + 1) : "";
