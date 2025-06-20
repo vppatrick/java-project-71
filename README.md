@@ -8,4 +8,4 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=vppatrick_java-project-71&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=vppatrick_java-project-71)
 
 
-[![asciicast](https://asciinema.org/a/xMRuFgihFHoORM0AhhuFOlzrg.svg)](https://asciinema.org/a/xMRuFgihFHoORM0AhhuFOlzrg)
+[![asciicast](https://asciinema.org/a/lUUv9k4ibZ1RojL3UVoOId6I3.svg)](https://asciinema.org/a/lUUv9k4ibZ1RojL3UVoOId6I3)
