@@ -30,21 +30,8 @@ public class App implements Callable<Integer> {
     }
     @Override
     public Integer call() {
-        Map<String, Object> firstMapOfData;
-        try {
-            firstMapOfData = Parser.getData(filePath1);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        Map<String, Object> secondMapOfData;
-        try {
-            secondMapOfData = Parser.getData(filePath2);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        var result = Differ.generate(firstMapOfData, secondMapOfData, format);
+        var result = Differ.generate(filePath1, filePath2, format);
         System.out.println(result);
-
         return 0;
     }
 }
