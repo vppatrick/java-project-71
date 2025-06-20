@@ -6,13 +6,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public final class Json {
     private Json() {
         throw new IllegalStateException("Utility class");
     }
-    public static String getFormat(LinkedHashMap<String, LinkedHashMap<String, Object>> data) {
+    public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
         ObjectMapper objectMapper = new ObjectMapper();
         StringJoiner result = new StringJoiner(",");
         for (var key : data.keySet()) {

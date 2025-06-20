@@ -1,6 +1,7 @@
 package formatters;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public final class Stylish {
@@ -9,7 +10,7 @@ public final class Stylish {
     private Stylish() {
         throw new IllegalStateException("Utility class");
     }
-    public static String getFormat(LinkedHashMap<String, LinkedHashMap<String, Object>> data) {
+    public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
         StringJoiner result = new StringJoiner("\n");
         result.add("{");
         for (var key : data.keySet()) {
