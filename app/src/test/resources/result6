@@ -1,65 +1,65 @@
 {
-"chars2": {
-  "state" : "updated",
-  "oldValue" : [ "d", "e", "f" ],
-  "newValue" : false
-},
-"checked": {
-  "state" : "updated",
-  "oldValue" : false,
-  "newValue" : true
-},
-"default": {
-  "state" : "updated",
-  "oldValue" : null,
-  "newValue" : [ "value1", "value2" ]
-},
-"id": {
-  "state" : "updated",
-  "oldValue" : 45,
-  "newValue" : null
-},
-"key1": {
-  "state" : "removed",
-  "value" : "value1"
-},
-"key2": {
-  "state" : "added",
-  "value" : "value2"
-},
-"numbers2": {
-  "state" : "updated",
-  "oldValue" : [ 2, 3, 4, 5 ],
-  "newValue" : [ 22, 33, 44, 55 ]
-},
-"numbers3": {
-  "state" : "removed",
-  "value" : [ 3, 4, 5 ]
-},
-"numbers4": {
-  "state" : "added",
-  "value" : [ 4, 5, 6 ]
-},
-"obj1": {
-  "state" : "added",
-  "value" : {
-    "nestedKey" : "value",
-    "isNested" : true
+  "chars2" : {
+    "state" : "updated",
+    "oldValue" : [ "d", "e", "f" ],
+    "newValue" : false
+  },
+  "checked" : {
+    "state" : "updated",
+    "oldValue" : false,
+    "newValue" : true
+  },
+  "default" : {
+    "state" : "updated",
+    "oldValue" : null,
+    "newValue" : [ "value1", "value2" ]
+  },
+  "id" : {
+    "state" : "updated",
+    "oldValue" : 45,
+    "newValue" : null
+  },
+  "key1" : {
+    "state" : "removed",
+    "value" : "value1"
+  },
+  "key2" : {
+    "state" : "added",
+    "value" : "value2"
+  },
+  "numbers2" : {
+    "state" : "updated",
+    "oldValue" : [ 2, 3, 4, 5 ],
+    "newValue" : [ 22, 33, 44, 55 ]
+  },
+  "numbers3" : {
+    "state" : "removed",
+    "value" : [ 3, 4, 5 ]
+  },
+  "numbers4" : {
+    "state" : "added",
+    "value" : [ 4, 5, 6 ]
+  },
+  "obj1" : {
+    "state" : "added",
+    "value" : {
+      "nestedKey" : "value",
+      "isNested" : true
+    }
+  },
+  "setting1" : {
+    "state" : "updated",
+    "oldValue" : "Some value",
+    "newValue" : "Another value"
+  },
+  "setting2" : {
+    "state" : "updated",
+    "oldValue" : 200,
+    "newValue" : 300
+  },
+  "setting3" : {
+    "state" : "updated",
+    "oldValue" : true,
+    "newValue" : "none"
   }
-},
-"setting1": {
-  "state" : "updated",
-  "oldValue" : "Some value",
-  "newValue" : "Another value"
-},
-"setting2": {
-  "state" : "updated",
-  "oldValue" : 200,
-  "newValue" : 300
-},
-"setting3": {
-  "state" : "updated",
-  "oldValue" : true,
-  "newValue" : "none"
-}
 }
