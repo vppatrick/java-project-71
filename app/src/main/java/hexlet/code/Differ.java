@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Differ {
+    private static final String ABSENT = "absent";
+    private static final String STATE = "state";
+    private static final String VALUE = "value";
     public static String generate(Map<String, Object> firstMapOfData,
                                   Map<String, Object> secondMapOfData, String format) {
         var setOfKeys = new HashSet<String>();
@@ -18,26 +21,26 @@ public class Differ {
 
         LinkedHashMap<String, LinkedHashMap<String, Object>> result = new LinkedHashMap<>();
         for (var key : sortedSetOfKeys) {
-            var result1 = firstMapOfData.getOrDefault(key, "absent");
-            var result2 = secondMapOfData.getOrDefault(key, "absent");
-            if (String.valueOf(result1).equals("absent")) { // added
+            var result1 = firstMapOfData.getOrDefault(key, ABSENT);
+            var result2 = secondMapOfData.getOrDefault(key, ABSENT);
+            if (String.valueOf(result1).equals(ABSENT)) { // added
                 var value = new LinkedHashMap<String, Object>();
-                value.put("state", "added");
-                value.put("value", result2);
+                value.put(STATE, "added");
+                value.put(VALUE, result2);
                 result.put(key, value);
-            } else if (String.valueOf(result2).equals("absent")) { // removed
+            } else if (String.valueOf(result2).equals(ABSENT)) { // removed
                 var value = new LinkedHashMap<String, Object>();
-                value.put("state", "removed");
-                value.put("value", result1);
+                value.put(STATE, "removed");
+                value.put(VALUE, result1);
                 result.put(key, value);
             } else if (String.valueOf(result1).equals(String.valueOf(result2))) { // no change
                 var value = new LinkedHashMap<String, Object>();
-                value.put("state", "noChange");
-                value.put("value", result1);
+                value.put(STATE, "noChange");
+                value.put(VALUE, result1);
                 result.put(key, value);
             } else { // updated
                 var value = new LinkedHashMap<String, Object>();
-                value.put("state", "updated");
+                value.put(STATE, "updated");
                 value.put("oldValue", result1);
                 value.put("newValue", result2);
                 result.put(key, value);
