@@ -29,7 +29,12 @@ public class App implements Callable<Integer> {
     }
     @Override
     public final Integer call() {
-        var result = Differ.generate(filePath1, filePath2, format);
+        String result = null;
+        try {
+            result = Differ.generate(filePath1, filePath2, format);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(result);
         return 0;
     }
