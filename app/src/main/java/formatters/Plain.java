@@ -1,6 +1,8 @@
 package formatters;
 
-import java.util.LinkedHashMap;
+import hexlet.code.DiffDTO;
+
+import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -8,32 +10,32 @@ public final class Plain {
     private Plain() {
         throw new IllegalStateException("Utility class");
     }
-    public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
+    public static String getFormat(List<DiffDTO> diffs) {
         StringJoiner result = new StringJoiner("\n");
-        for (var entry : data.entrySet()) {
-            var key = entry.getKey();
-            var value = entry.getValue();
-            if (value.get("state").equals("added")) {
-                result.add("Property '" + key + "' was added with value: "
-                        + castingToType(value.get("value")));
-            } else if (value.get("state").equals("removed")) {
-                result.add("Property '" + key + "' was removed");
-            } else if (value.get("state").equals("updated")) {
-                result.add("Property '" + key + "' was updated. From "
-                        + castingToType(value.get("oldValue")) + " to "
-                        + castingToType(value.get("newValue")));
+
+        for (var diff : diffs) {
+            switch (diff.getState()) {
+                case "added" -> result.add("Property '" + diff.getName() + "' was added with value: "
+                        + castingToType(diff.getValue()));
+                case "removed" -> result.add("Property '" + diff.getName() + "' was removed");
+                case "updated" -> result.add("Property '" + diff.getName() + "' was updated. From "
+                        + castingToType(diff.getOldValue()) + " to "
+                        + castingToType(diff.getNewValue()));
+                case "noChange" -> { }
+                default -> throw new IllegalStateException("Unexpected value: " + diff.getState());
             }
         }
+
         return result.toString();
     }
 
     private static String castingToType(Object value) {
-        if (value instanceof Number || value instanceof Boolean || value == null) {
-            return String.valueOf(value);
+        if (value instanceof Map || value instanceof List) {
+            return "[complex value]";
         } else if (value instanceof String) {
             return "'" + value + "'";
         } else {
-            return "[complex value]";
+            return String.valueOf(value);
         }
     }
 }
