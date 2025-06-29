@@ -13,30 +13,22 @@ public final class Json {
     private Json() {
         throw new IllegalStateException("Utility class");
     }
-    public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) {
+    public static String getFormat(Map<String, LinkedHashMap<String, Object>> data) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         StringJoiner result = new StringJoiner(",");
         for (var entry : data.entrySet()) {
             var key = entry.getKey();
             var value = entry.getValue();
             if (!value.get("state").equals("noChange")) {
-                try {
-                    result.add("\"" + key + "\": " + objectMapper.writeValueAsString(value));
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
+                result.add("\"" + key + "\": " + objectMapper.writeValueAsString(value));
             }
         }
         return getPrintFormatJson("{" + result + "}");
     }
-    public static String getPrintFormatJson(String data) {
+    public static String getPrintFormatJson(String data) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        try {
-            JsonNode json = objectMapper.readTree(data);
-            return objectMapper.writeValueAsString(json);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        JsonNode json = objectMapper.readTree(data);
+        return objectMapper.writeValueAsString(json);
     }
 }
