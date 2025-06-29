@@ -7,6 +7,7 @@ plugins {
     id("checkstyle")
     id("com.github.ben-manes.versions") version "0.52.0"
     id("org.sonarqube") version "6.2.0.5505"
+    id("io.freefair.lombok") version "8.14"
 }
 
 group = "hexlet.code"
