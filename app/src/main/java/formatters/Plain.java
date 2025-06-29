@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 public final class Plain {
-    private static final String PROPERTY = "Property '";
-    private static final String STATE = "state";
     private Plain() {
         throw new IllegalStateException("Utility class");
     }
@@ -15,13 +13,13 @@ public final class Plain {
         for (var entry : data.entrySet()) {
             var key = entry.getKey();
             var value = entry.getValue();
-            if (value.get(STATE).equals("added")) {
-                result.add(PROPERTY + key + "' was added with value: "
+            if (value.get("state").equals("added")) {
+                result.add("Property '" + key + "' was added with value: "
                         + castingToType(value.get("value")));
-            } else if (value.get(STATE).equals("removed")) {
-                result.add(PROPERTY + key + "' was removed");
-            } else if (value.get(STATE).equals("updated")) {
-                result.add(PROPERTY + key + "' was updated. From "
+            } else if (value.get("state").equals("removed")) {
+                result.add("Property '" + key + "' was removed");
+            } else if (value.get("state").equals("updated")) {
+                result.add("Property '" + key + "' was updated. From "
                         + castingToType(value.get("oldValue")) + " to "
                         + castingToType(value.get("newValue")));
             }
