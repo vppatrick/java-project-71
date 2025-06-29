@@ -18,7 +18,7 @@ public final class Formatter {
         } else if (format.equals("json")) {
             return Json.getFormat(data);
         } else {
-            return "invalid format";
+            throw new RuntimeException("Unknown format: " + format);
         }
     }
 }
