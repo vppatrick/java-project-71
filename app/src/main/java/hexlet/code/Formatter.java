@@ -10,7 +10,7 @@ public final class Formatter {
     private Formatter() {
         throw new IllegalStateException("Utility class");
     }
-    public static String getData(Map<String, LinkedHashMap<String, Object>> data, String format) {
+    public static String getData(Map<String, LinkedHashMap<String, Object>> data, String format) throws Exception {
         if (format.equals("stylish")) {
             return Stylish.getFormat(data);
         } else if (format.equals("plain")) {
