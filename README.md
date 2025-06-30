@@ -47,4 +47,4 @@ Utility for comparing two configuration files and displaying the differences bet
 
 ## Example
 
-[![asciicast](https://asciinema.org/a/lUUv9k4ibZ1RojL3UVoOId6I3.svg)](https://asciinema.org/a/lUUv9k4ibZ1RojL3UVoOId6I3)
+[![asciicast](https://asciinema.org/a/UvcuFPN4xC86xiqh9pFIPKVGo.svg)](https://asciinema.org/a/UvcuFPN4xC86xiqh9pFIPKVGo)
