@@ -1,7 +1,6 @@
-package formatters;
+package hexlet.code.formatters;
 
 import hexlet.code.DiffDTO;
-
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
